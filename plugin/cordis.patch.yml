@@ -1,4 +1,0 @@
-- insert:
-    - id: today-connector
-      name: '@local/dsh-today-connector'
-      config: {}

@@ -1,0 +1,11 @@
+import type { TodayRegion, TodayRegionConfig } from './types.js';
+export declare const TODAY_OAUTH_CLIENT_ID = "Bh2VwEojzfuJw4kBGuLQf3wxGEoupUnx";
+export declare const TODAY_PROVIDER_CN = "today";
+export declare const TODAY_PROVIDER_GLOBAL = "today-global";
+export declare const TODAY_AUTH_DIR_ENV = "TODAY_AUTH_DIR";
+export declare const TODAY_REGION_ENV = "TODAY_REGION";
+export declare function resolveDesktopUserDataDir(productDirName: string): string;
+export declare function executableCandidatesFor(region: TodayRegion): string[];
+export declare function getRegionConfig(region: TodayRegion, customUserDataDir?: string): TodayRegionConfig;
+export declare function detectInstalledRegion(preferred?: TodayRegion): TodayRegionConfig;
+export declare function findInstalledExecutable(region: TodayRegion): string | undefined;

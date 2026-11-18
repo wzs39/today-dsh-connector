@@ -1,0 +1,89 @@
+{
+  "name": "dsh-today",
+  "displayName": "DSH Connect Today",
+  "version": "1.2.2",
+  "description": "把本机登录的 Today AI 模型接入 DeepSeek Harness：支持原生双轨思考过程呈现、自驱动 Auto-Pump 任务交付引擎与本地 DPAPI 零密钥安全互操作。",
+  "type": "module",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "bin": {
+    "dsh-today": "dist/src/bin.js",
+    "dsh-connect-today": "dist/src/bin.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/src",
+    "cordis.patch.yml",
+    "locale",
+    "README.md",
+    "README.en.md",
+    "DISCLAIMER.md",
+    "THIRD_PARTY_NOTICES.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "provider": {
+      "ids": [
+        "today",
+        "today-global"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepack": "npm run build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test dist/tests/*.spec.js",
+    "check": "npm run typecheck && npm run test",
+    "start": "node dist/src/bin.js serve",
+    "doctor": "node dist/src/bin.js doctor",
+    "status": "node dist/src/bin.js status"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "today",
+    "today-ai",
+    "todayai",
+    "model-provider",
+    "deepseek-v4",
+    "dual-track-thinking",
+    "auto-pump",
+    "cordis"
+  ],
+  "author": "dsh-today contributors",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuemei-wintersweet/dsh-today.git"
+  },
+  "homepage": "https://github.com/xuemei-wintersweet/dsh-today#readme",
+  "bugs": {
+    "url": "https://github.com/xuemei-wintersweet/dsh-today/issues"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.1-rc.1 <5.0.0 || >=4.0.2 <5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2"
+  }
+}
